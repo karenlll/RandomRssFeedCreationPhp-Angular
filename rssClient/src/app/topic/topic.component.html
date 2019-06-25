@@ -1,0 +1,55 @@
+
+   <br>
+    <div class="container">
+        <div class="container">
+          <div fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row"  fxLayoutAlign="center center" class="content">
+              <div class="blocks">
+              	<button (click)="subscribe()"  mat-raised-button color="primary">
+    				<mat-icon>dvr</mat-icon>Subscribe or Unsubscribe
+  				</button>
+              </div>
+        </div>
+    </div>
+    <br>
+<div class="row">
+	<div class="columnOne">
+    		<p>Select your preferred news topics before to Subscribe</p>
+    		<ul class="topics">
+    			<div *ngFor="let t of topics; index as i" class="option-group">
+        			<li><input type="checkbox"  id="{{t.idtopics}}" required (click)="setCheckbox(t.idtopics)"/> <label for="{{t}}"> {{ t.description }}</label></li>
+    			</div>
+			</ul>
+	</div>
+	<div class="columnTwo">
+    		<div class="container">
+      			<div fxLayout="row" fxLayoutAlign="center center" class="content">
+        			<mat-card class="card" >
+          				<mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            				<h3>Recent News!</h3>
+          				</mat-card-title>
+          				<mat-card-content>
+              				<div class="example-container mat-elevation-z8">
+                  				<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                  					<ng-container matColumnDef="title">
+                    					<th mat-header-cell *matHeaderCellDef> Title </th>
+    									<td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                  					</ng-container>
+                    				<ng-container matColumnDef="description">
+                      					<th mat-header-cell *matHeaderCellDef> Description </th>
+    									<td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                    				</ng-container>
+                    				<ng-container matColumnDef="author">
+                      					<th mat-header-cell *matHeaderCellDef> Author </th>
+    									<td mat-cell *matCellDef="let element"> {{element.author}} </td>
+                    				</ng-container>
+                    				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  									<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+								</table>
+                			</div>
+          				</mat-card-content>
+        			</mat-card>
+        		</div>
+        	</div>
+     </div>
+</div>
+    
